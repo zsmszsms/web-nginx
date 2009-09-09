@@ -1,4 +1,0 @@
-upstream :upstream_name:{
-        logerror_next_upstream http_500 http_502 http_503 http_504 http_404;
-	:upstream_server_list:
-}

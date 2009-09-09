@@ -1,4 +1,0 @@
-upstream :upstream_name:{
-        :upstream_server_list:
-}
-
