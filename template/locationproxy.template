@@ -1,0 +1,6 @@
+location :location_path: {
+	:rewrite_policy:
+        proxy_next_upstream :proxy_next_upstream: ;
+        proxy_pass http://:proxy_pass: ;
+        access_log :access_log: ;
+}
