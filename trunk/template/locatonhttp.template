@@ -1,0 +1,7 @@
+location :location_path: {
+	alias :alias: ;
+	root :root_path: ;	
+        proxy_next_upstream :proxy_next_upstream: ;
+        proxy_pass http://:proxy_pass: ;
+        access_log :access_log: ;
+}
