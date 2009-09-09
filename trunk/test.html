@@ -1,0 +1,25 @@
+<html>
+<head>
+<script type="text/javascript">
+function removeElement(id)
+{
+if(document.getElementById(id).style.display == "none"){
+document.getElementById(id).style.display="block";
+}else{
+document.getElementById(id).style.display="none";
+}
+}
+</script>
+</head>
+<body>
+
+<h1>Hello</h1>
+
+<p id="p1" style="display:none">This is some text. This is some text. This is some text.
+This is some text. This is some text. This is some text.
+This is some text. This is some text. This is some text.</p>
+
+<a href="#" onclick="removeElement('p1')">test</a>
+
+</body>
+</html>
