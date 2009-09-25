@@ -58,25 +58,33 @@ die("place relogin<a href ='login.php'>login page</a>");
 		<table name="template_name">
 		<tr>
 		<td>service</td>
-		<td>upstream</td>
 		</tr>
 		<?php
 		$res = $dbconnect->query("select * from services where status=1");
-		is_error($res);
-		$commit_service_sum = 0;
-		if($res->numRows() > 0){
-		$commit_service_sum = 1;
-		echo "<form action='commitconf_active.php' method='post'>".
-		"<tr>".
-		"<td><select name='service_id'>";
-		}
-		while($commit_service_name = $res->fetchRow(DB_FETCHMODE_ASSOC)){
-		echo "<option value='".$commit_service_name['id']."'>".$commit_service_name['id'].$commit_service_name['domain_name']."</option>";
-		}
-		if($commit_service_sum == 1){
-		echo"</select></td>";
+                is_error($res);
+$res = $dbconnect->query("select * from services where status=1");
+                is_error($res);
+                $commit_service_sum = 0;
+                if($res->numRows() > 0){
+                $commit_service_sum = 1;
+                echo "<form action='commitconf_active.php' method='post'>".
+                "<tr>".
+                "<td><select name='service_id'>";
+                }
+                while($commit_service_name = $res->fetchRow(DB_FETCHMODE_ASSOC)){
+                echo "<option value='".$commit_service_name['id']."'>".$commit_service_name['id'].$commit_service_name['domain_name']."</option>";
+                }
+                if($commit_service_sum == 1){
+                echo"</select></td>";
+		echo"</tr>";
+		?>	
+		<tr>
+		<td>upstream</td>
+		</tr>
+		<?php
 		$res = $dbconnect->query("select * from templates where template_type='upstream'");
 		is_error($res);
+		echo"<tr>";
 		echo"<td><select name='template_upstream'>";
 		while($template_upstream_name = $res->fetchRow(DB_FETCHMODE_ASSOC)){
 		echo "<option value='".$template_upstream_name['template_name']."'>".$template_upstream_name['template_name']."</option>";
@@ -87,23 +95,34 @@ die("place relogin<a href ='login.php'>login page</a>");
 		?>
 		<tr>
 		<td>location</td>
-                <td>commit all</td>
                 </tr>
 		<?php
 		if($commit_service_sum == 1){
-		$res = $dbconnect->query("select * from templates where template_type='location'");
-		is_error($res);
-		echo"<td><select name='template_location'>";
-		while($template_location_name = $res->fetchRow(DB_FETCHMODE_ASSOC)){
-		echo "<option value='".$template_location_name['template_name']."'>".$template_location_name['template_name']."</option>";
+                $res = $dbconnect->query("select * from templates where template_type='location'");
+                is_error($res);
+		echo"<tr>";
+                echo"<td><select name='template_location'>";
+                while($template_location_name = $res->fetchRow(DB_FETCHMODE_ASSOC)){
+                echo "<option value='".$template_location_name['template_name']."'>".$template_location_name['template_name']."</option>";
+                }
+                echo "</select></td>";
 		}
-		echo "</select></td>";
+		echo "</tr>";
+		?>
+		<tr>
+		<td>commit all</td>
+                </tr>
+		<?php
+		if($commit_service_sum == 1){
+		echo "<tr>";
 		echo "<td><input type='checkbox' name='commit_all' /></td>";
-		}else{
-		echo "<td>information:</td><td>no find commit services!!</td>";	
+		echo"</tr>";
+		}	
+		if($commit_service_sum != 1){
+		echo "<tr><td>no find commit services!</td></tr>";
 		}
-		echo"<tr>";	
-		?>	
+		?>
+			
 		</table>
 		<?php
 		if($commit_service_sum == 1){

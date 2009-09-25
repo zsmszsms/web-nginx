@@ -42,6 +42,8 @@ die("place relogin<a href ='login.php'>login page</a>");
                 <td><input name="root_path" value="'.$location_info['root_path'].'"></td>
                 <td><input name="proxypass" value="'.$location_info['proxy_pass'].'"></td>
                 </tr>'.
+		'<tr><td colspan="2">valid_referers</td></tr>
+                        <tr><td colspan="2"><input name="valid_referers" size="40" value="'.$location_info['valid_referers'].'"></td></tr>'.
                 '<tr><td colspan="2">proxy_next_upstream</td></tr>
                  <tr><td colspan="2"><input name="proxy_next_upstream" size="40" value="'.$location_info['proxy_next_upstream'].'"></td></tr>
                  <tr><td colspan="2">access_log</td></tr>

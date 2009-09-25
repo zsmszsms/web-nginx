@@ -21,7 +21,66 @@ $user_class = isuser($_POST['username'],$_POST['password']);
 ?>
  <div id="content">
                 <div id="colOne">
-                        <h2>Nginx Services manager</h2>
+			<h2>Nginx Services manager</h2>
+			<?
+			$res = $dbconnect->query("select * from services");
+			is_error($res);
+			$servicesum=$res->numRows();
+			$res = $dbconnect->query("select DISTINCT serverip from services");
+			is_error($res);
+			$serveripsum=$res->numRows();
+			$res = $dbconnect->query("select * from services where status<>3");
+			is_error($res);
+			$errorsum=$res->numRows();
+			echo "<p>service sum :".$servicesum." server sum:".$serveripsum." error sum: ".$errorsum."</p>";
+                        echo "<hr/>";
+			if($res->numRows() >0){
+			echo "<a href='#' onclick='showElement(\"error_service\" )' style='display:none'>error service</a>";
+			echo "<div id='error_service'>";
+			echo ' <table name="error_service">
+                        <tr>
+                        <th>id</th>
+                        <th>Domain</th>
+                        <th>server</th>
+                        <th>status</th>
+                        <th>viwes</th>
+                        </tr>';
+			 while($services_info=$res->fetchRow(DB_FETCHMODE_ASSOC)){
+                        echo "<tr>";
+                        echo "<td>".$services_info['id']."</td>";
+                          if($services_info['status'] == 0){
+                        echo "<td><a href='config_active.php?active=newconfig&serviceid=".$services_info['id']."'>".$services_info['domain_name']."</a></td>";
+                        }else{
+                        echo "<td><a href='config_active.php?active=modifconfig&serviceid=".$services_info['id']."'>".$services_info['domain_name']."</a></td>";
+                        }
+                        echo "<td><a href='modifservice.php?id=".$services_info['id']."'>".$services_info['serverip']."</a></td>";
+                        switch($services_info['status']){
+                                case 0:
+                                echo "<td><img src='img/computernew.gif' title='service status new'></td>";
+                                break;
+                                case 1:
+                                echo "<td><img src='img/computeredit.gif' title='service status changed'></td>";
+                                break;
+                                case 2:
+                                echo "<td><img src='img/commentadd.gif' title='service status comment'></td>";
+                                break;
+                                case 3:
+                                echo "<td><img src='img/computerstart.gif' title='service status online'></td>";
+                                break;
+                                case 4:
+                                echo "<td><img src='img/computerstop.gif' title='service status config error'></td>";
+                                break;
+                        }
+                        if ($services_info['status'] > 1){
+                        echo "<td><a href='config_dir/".$services_info['serverip']."/".$services_info['conf_name'].".vservice' target='_blank'>view</a></td>";
+                        }
+                        echo"</tr>";
+			}
+			echo "</table>".
+			"</div>";
+			}
+			?>
+                        <h3>Nginx Services list</h3>
 			<table name="listnginxserver">
                         <tr>
                         <th>id</th>
@@ -49,19 +108,19 @@ $user_class = isuser($_POST['username'],$_POST['password']);
                         echo "<td><a href='modifservice.php?id=".$services_info['id']."'>".$services_info['serverip']."</a></td>";
 			switch($services_info['status']){
 				case 0:
-				echo "<td>new service</td>";
+				echo "<td><img src='img/computernew.gif' title='service status new'></td>";
 				break;
 				case 1:
-				echo "<td>chenged</td>";
+				echo "<td><img src='img/computeredit.gif' title='service status changed'></td>";
 				break;
 				case 2:
-				echo "<td>commited</td>";
+				echo "<td><img src='img/commentadd.gif' title='service status comment'></td>";
 				break;
 				case 3:
-				echo "<td>online</td>";
+				echo "<td><img src='img/computerstart.gif' title='service status online'></td>";
 				break;
 				case 4:
-				echo "<td>cf error</td>";
+				echo "<td><img src='img/computerstop.gif' title='service status config error'></td>";
 				break;
 			}
 			if ($services_info['status'] > 1){

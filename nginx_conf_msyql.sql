@@ -31,6 +31,7 @@ create table locations (
  proxy_pass varchar(255) default null,
  proxy_next_upstream varchar(255) default null,
  access_log varchar(255) not null,
+ valid_referers varchar(500) default null,
  service_id int not null,
  primary key(location_path,service_id)
 );

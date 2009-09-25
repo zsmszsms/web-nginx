@@ -105,6 +105,7 @@ return $authpass;
 }
 //commit to command
 $upstream_commit_command=array("/:upstream_name:/","/:upstream_server_list:/");
-$location_commit_command=array("/:location_path:/","/:alias:/","/:root_path:/","/:proxy_pass:/","/:proxy_next_upstream:/","/:access_log:/","/:rewrite_policy:/");
+$location_commit_command=array("/:location_path:/","/:alias:/","/:root_path:/","/:proxy_pass:/","/:proxy_next_upstream:/","/:access_log:/","/:rewrite_policy:/","/:valid_referers:/");
 $server_commit_comand=array("/:server_name:/");
+$version="v1.1.1";
 ?>

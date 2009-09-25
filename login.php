@@ -4,7 +4,9 @@ include "head.php";
 ?>
  <div id="content">
                 <div id="colOne">
-                        <h2>Nginx Services manager</h2>
+			<h2>Nginx Services manager</h2>
+			<hr\>
+			<p>login</p>
                         <table name="listnginxserver">
                         <tr>
                         <th>username</th>
@@ -21,7 +23,8 @@ include "head.php";
                 <div id="colTwo">
                         <h2>Nginx Services</h2>
                         <h3>Help Information</h3>
-                        <p>nginx server manager!!</p>
+			<p>nginx 配置管理程序</p>
+			<p>请使用您的用户名登录</p>
                 </div>
                 <div style="clear: both;">&nbsp;</div>
         </div>

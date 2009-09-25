@@ -7,7 +7,7 @@
 				<li><a href="changelog.php">changelog</a></li>
                         </ul>
                         <h3>Help Information</h3>
-                        <p> nginx services in manager!!</p>
+			<p> nginx 管理程序 关于说明</p>
                 </div>
                 <div style="clear: both;">&nbsp;</div>
         </div>
