@@ -6,7 +6,8 @@
                                 <li><a href="nginx_maps.php?maps_active=domain">domain name list maps</a></li>
                         </ul>
                         <h3>Help Information</h3>
-                        <p> nginx services in manager!!</p>
+			<p> nginx 管理程序</p>
+			查看nginx服务群的分布
                 </div>
                 <div style="clear: both;">&nbsp;</div>
         </div>

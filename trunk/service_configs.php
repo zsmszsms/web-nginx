@@ -34,21 +34,21 @@ if ($_SESSION['user_class'] == null){
 			}
                         echo "<td><a href='modifservice.php?id=".$services_info['id']."'>".$services_info['serverip']."</a></td>";
                         switch($services_info['status']){
-                                case 0:
-                                echo "<td>new service</td>";
-                                break;
-                                case 1:
-                                echo "<td>chenged</td>";
-                                break;
-                                case 2:
-                                echo "<td>commited</td>";
-                                break;
-                                case 3:
-                                echo "<td>online</td>";
-                                break;
-                                case 4:
-                                echo "<td>cf error</td>";
-                                break;
+                               case 0:
+				echo "<td><img src='img/computernew.gif' title='service status new'></td>";
+				break;
+				case 1:
+				echo "<td><img src='img/computeredit.gif' title='service status changed'></td>";
+				break;
+				case 2:
+				echo "<td><img src='img/commentadd.gif' title='service status comment'></td>";
+				break;
+				case 3:
+				echo "<td><img src='img/computerstart.gif' title='service status online'></td>";
+				break;
+				case 4:
+				echo "<td><img src='img/computerstop.gif' title='service status config error'></td>";
+				break;
                         }
                         echo"</tr>";
 			}

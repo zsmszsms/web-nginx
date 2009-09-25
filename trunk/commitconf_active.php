@@ -86,7 +86,7 @@ switch($_REQUEST['active']){
 		$template_location_file="template/".$_POST['template_location'];
 		$template_location_buffer=template_read($template_location_file);
 		$location_commit_array=array();
-		array_push($location_commit_array,$commit_location_info['location_path'],$commit_location_info['alias'],$commit_location_info['root_path'],$commit_location_info['proxy_pass'],$commit_location_info['proxy_next_upstream'],$commit_location_info['access_log'],$commit_rewirtes_contect);
+		array_push($location_commit_array,$commit_location_info['location_path'],$commit_location_info['alias'],$commit_location_info['root_path'],$commit_location_info['proxy_pass'],$commit_location_info['proxy_next_upstream'],$commit_location_info['access_log'],$commit_rewirtes_contect,$commit_location_info['valid_referers']);
 		$commit_location_contect .= preg_replace($location_commit_command,$location_commit_array,$template_location_buffer);		
 		}
 		$template_server_file="template/server.template";
@@ -174,7 +174,7 @@ switch($_REQUEST['active']){
                 $template_location_file="template/".$_POST['template_location'];
                 $template_location_buffer=template_read($template_location_file);
                 $location_commit_array=array();
-                array_push($location_commit_array,$commit_location_info['location_path'],$commit_location_info['alias'],$commit_location_info['root_path'],$commit_location_info['proxy_pass'],$commit_location_info['proxy_next_upstream'],$commit_location_info['access_log'],$commit_rewirtes_contect);
+                array_push($location_commit_array,$commit_location_info['location_path'],$commit_location_info['alias'],$commit_location_info['root_path'],$commit_location_info['proxy_pass'],$commit_location_info['proxy_next_upstream'],$commit_location_info['access_log'],$commit_rewirtes_contect,$commit_location_info['valid_referers']);
                 $commit_location_contect .= preg_replace($location_commit_command,$location_commit_array,$template_location_buffer);
                 }
                 $template_server_file="template/server.template";

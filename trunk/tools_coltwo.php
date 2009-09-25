@@ -15,7 +15,8 @@
 				<li><a href="relaunch_service.php">relaunch service</a></li>
 			</ul>
                         <h3>Help Information</h3>
-                        <p> nginx services in manager!!</p>
+			<p> nginx 管理程序</p>
+			用户管理，配置重载，搜索
                 </div>
                 <div style="clear: both;">&nbsp;</div>
         </div>

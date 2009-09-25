@@ -59,6 +59,9 @@ die("place relogin<a href ='login.php'>login page</a>");
 			$locationsum=0;
 			while($location_info=$locationsres->fetchRow(DB_FETCHMODE_ASSOC)){
 				echo "location ".$location_info['location_path']." { <a href='modiflocation.php?id=".$location_info['id']."&serviceid=".$config_service_id."'>edit location</a><br/>";
+				if($location_info['valid_referers'] !=null){
+				echo "valid_referers ".$location_info['valid_referers'].";<br/>";
+				}
 				$rewrites_info_res = $dbconnect->query("select comments from rewrites_in_location where location_id=".$location_info['id']);
 				is_error($rewrites_info_res);
 				if($rewrites_info_res > 0){
@@ -159,6 +162,8 @@ die("place relogin<a href ='login.php'>login page</a>");
 			 <td><input name="root_path"></td>
                         <td><input name="proxypass"></td>
 			</tr>
+			<tr><td colspan="2">valid_referers</td></tr>
+			<tr><td colspan="2"><input name="valid_referers" size="40"></td></tr>
 			<tr><td colspan="2">proxy_next_upstream</td></tr>
 			<tr><td colspan="2"><input name="proxy_next_upstream" size="40"></td></tr>
 			<tr><td colspan="2">access_log</td></tr>

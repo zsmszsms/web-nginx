@@ -11,7 +11,8 @@
                                 <li><a href="commitconf.php">Commit nginx conf</a></li>
                         </ul>
                         <h3>Help Information</h3>
-                        <p> nginx configs manage!!</p>
+			<p> nginx 管理程序</p>
+			配置 nginx service，提交nginx配置，管理nginx模板
                 </div>
                 <div style="clear: both;">&nbsp;</div>
         </div>

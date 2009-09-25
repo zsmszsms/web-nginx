@@ -1,4 +1,5 @@
 <?php
+$actionid="tools";
 include "head.php";
 include "functionapi.php";
 if ($_SESSION['user_class'] == null){

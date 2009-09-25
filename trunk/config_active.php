@@ -35,7 +35,7 @@ switch($_REQUEST['active']){
 	break;
 	case "addlocation":
 	$location_path=mysql_escape_string($_POST['location_path']);
-	$res = $dbconnect->query("insert into locations (location_path, alias, root_path, proxy_pass, proxy_next_upstream, access_log, service_id) values('".$location_path."', '".$_POST['alias']."', '".$_POST['root_path']."', '".$_POST['proxypass']."', '".$_POST['proxy_next_upstream']."', '".$_POST['access_log']."', ".$_POST['locationserviceid'].")");
+	$res = $dbconnect->query("insert into locations (location_path, alias, root_path, proxy_pass, valid_referers, proxy_next_upstream, access_log, service_id) values('".$location_path."', '".$_POST['alias']."', '".$_POST['root_path']."', '".$_POST['proxypass']."', '".$_POST['valid_referers']."', '".$_POST['proxy_next_upstream']."', '".$_POST['access_log']."', ".$_POST['locationserviceid'].")");
 	if(PEAR::isError($res)){
         $addconfig_header="location: addconfigs.php?serviceid=".$_POST['locationserviceid']."&addlocation_error=true";
         }else{
@@ -61,7 +61,7 @@ switch($_REQUEST['active']){
 	break;
 	case "modiflocation":
 	$location_path=mysql_escape_string($_POST['location_path']);
-	$res = $dbconnect->query("update locations set location_path='".$location_path."', alias='".$_POST['alias']."', root_path='".$_POST['root_path']."', proxy_pass='".$_POST['proxypass']."', proxy_next_upstream='".$_POST['proxy_next_upstream']."', access_log='".$_POST['access_log']."' where id=".$_POST['locationid']);
+	$res = $dbconnect->query("update locations set location_path='".$location_path."', alias='".$_POST['alias']."', root_path='".$_POST['root_path']."', proxy_pass='".$_POST['proxypass']."', valid_referers='".$_POST['valid_referers']."', proxy_next_upstream='".$_POST['proxy_next_upstream']."', access_log='".$_POST['access_log']."' where id=".$_POST['locationid']);
 	is_error($res);
 	$status=1;
         if(upserivce_status($status,$_REQUEST['serviceid'])){
