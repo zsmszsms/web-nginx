@@ -10,19 +10,20 @@ create database nginx_conf
 ==3>安装pear db==
 pear install db
 ==4>配置config.php==
-$_CONF['peardb_path']   = “/usr/share/pear”;
+$_CONF['peardb_path']="/usr/share/pear";
 // Database DSN.
-$_CONF['db_type']       = “mysql”;
-$_CONF['db_user']       = “username”;
-$_CONF['db_pass']       = “password”;
-$_CONF['db_host']       = “localhost”;
-$_CONF['db_db']         = “nginx_conf”;
+$_CONF['db_type']="mysql";
+$_CONF['db_user']="username";
+$_CONF['db_pass']="password";
+$_CONF['db_host']="localhost";
+$_CONF['db_db']="nginx_conf";
 //Nginx conf temp dir
-$_CONF['conf_temp'] = “/tmp”;
-$_CONF['conf_dir'] = “config_dir/”;
-$_CONF['commit_log'] = “commitlog/commitlog.log”;
-$_CONF['md5_file']= “commitlog/md5_file.log”;
-$_CONF['admin_mail']=”web-naginxadmin@xx.com”;
+$_CONF['conf_temp']="/tmp";
+$_CONF['conf_dir']="config_dir/";
+$_CONF['commit_log']="commitlog/commitlog.log";
+$_CONF['md5_file']="commitlog/md5_file.log";
+$_CONF['admin_mail']="web-naginxadmin@xx.com";
 =web-nginx管理过程=
 web-nginx把每一个虚拟主机看成为一个服务
 配置服务|->|配置服务配置|->|提交配置|->|生成配置vserivce文件|->|写入日志|->客户端程序读取日志下载配置|->服务reload
+=web-nginx-client配置=
