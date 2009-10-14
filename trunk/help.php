@@ -23,7 +23,12 @@ die("place relogin<a href ='login.php'>login page</a>");
 		<li>客户错误日志</li>
 		</ul>
 	<li>configs 模块</li>
-	<p></p>
+	<p>configs 用于配置nginx service的内容。支持不同的模板定义，web-nginx使用专用指令写入配置文件。</p>
+		<ul>
+		<li>修改配置</li>
+		<li>删除配置</li>
+		<li>提交配置</li>
+		</ul>
 	</ul>
 </div>
 <?php

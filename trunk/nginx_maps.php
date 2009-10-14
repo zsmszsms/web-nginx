@@ -21,10 +21,13 @@ die("place relogin<a href ='login.php'>login page</a>");
 		die("not service in web-nginx !!");
 		}
 		while($service_serverip = $service_serverip_res->fetchRow()){
-		echo '<a href="#" onclick="showElement(\''.$service_serverip[0].'\')">show: '.$service_serverip[0].'</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="modif_service_host.php?serverip='.$service_serverip[0].'">edit</a>'.
-		'<div id="'.$service_serverip[0].'" style="display:none">';
 		$service_domain_name_res = $dbconnect->query("select id,domain_name from services where serverip='".$service_serverip[0]."'");
 		is_error($service_domain_name_res);
+		$count_domains=$service_domain_name_res->numRows();
+		echo '<a href="#" onclick="showElement(\''.$service_serverip[0].'\')">show: '.$service_serverip[0].'|count domains:'.$count_domains.'</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="modif_service_host.php?serverip='.$service_serverip[0].'">edit</a>'.
+		'<div id="'.$service_serverip[0].'" style="display:none">';
+		//$service_domain_name_res = $dbconnect->query("select id,domain_name from services where serverip='".$service_serverip[0]."'");
+		//is_error($service_domain_name_res);
 			echo "<ul>";
 			while($service_domain_name = $service_domain_name_res->fetchRow()){
 			echo "<li><a href='addconfigs.php?serviceid=".$service_domain_name[0]."'>$service_domain_name[1]</a></li>";
@@ -41,8 +44,9 @@ die("place relogin<a href ='login.php'>login page</a>");
                 }
 		while ($service_domain_name = $service_domain_name_res->fetchRow()){
 		$service_serverip_res = $dbconnect->query("select id,serverip from services where domain_name='".$service_domain_name[0]."'");
-		is_error($service_domain_name_res);
-		echo '<a href="#" onclick="showElement(\''.$service_domain_name[0].'\')">show: '.$service_domain_name[0].'</a>'.
+		is_error($service_serverip_res);
+		$count_ips=$service_serverip_res->numRows();
+		echo '<a href="#" onclick="showElement(\''.$service_domain_name[0].'\')">show: '.$service_domain_name[0].'|count ips:'.$count_ips.'</a>'.
 		'<div id="'.$service_domain_name[0].'" style="display:none">';
 			 echo "<ul>";
 			while($service_serverip = $service_serverip_res->fetchRow()){
